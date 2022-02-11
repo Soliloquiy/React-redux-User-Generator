@@ -1,8 +1,9 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas/index';
+
+//STEP 3: Create store to contain state for entire app
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

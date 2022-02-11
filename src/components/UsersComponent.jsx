@@ -4,28 +4,25 @@ import { getUsers } from '../redux/actions/users';
 import Card from './CardComponent';
 
 const Users = () => {
+  //dispatch is handled by the component
   const dispatch = useDispatch();
+  //selectors are used to grab the state from reducer
   const users = useSelector(state => state.users.users);
+  const loading = useSelector(state => state.users.loading);
+  const error = useSelector(state => state.users.error);
 
   useEffect(() => {
-    dispatch(getUsers([
-      {
-        id: 1,
-        name: 'Leanne Graham',
-        company: {
-          name: "Romaguera-Crona",
-          catchPhrase: "Multi-layered client-server neural-net",
-        }
-      }
-    ]));
+    dispatch(getUsers());
   }, [])
 
   return (
     <>
+      {loading && <p>Loading...</p>}
       {users.length > 0 && users.map((user) => (
         <Card key={user.id} user={user} />
       ))}
-      {users.length === 0 && <p>No users available!</p>}
+      {users.length === 0 && !loading && <p>No users available!</p>}
+      {error && !loading && <p>{error}</p>}
     </>
   )
 }

@@ -12,6 +12,9 @@ function getApi() {
     .catch((error) => {throw error})
 }
 
+
+//function is used to call api and set new actions
+// and payloads that are not in actions folder
 function* fetchUsers(action) {
   try {
     const users = yield call(getApi);
@@ -21,7 +24,8 @@ function* fetchUsers(action) {
   }
 }
 
-//Define function that will listen to fetchUsers action
+//function will watch for every time getUsers action
+// is dispatched
 
 function* userSaga() {
   yield takeEvery('GET_USERS_REQUESTED', fetchUsers);

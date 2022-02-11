@@ -9,6 +9,9 @@ const initialState = {
 
 //Reducer mutates the state based on the action
 //Switch statement is used to handle the different cases
+
+//No action.payload as it is receiving data from the saga
+// which uses action.users, and action.message instead
 export default function users(state = initialState, action) {
   switch(action.type) {
     case type.GET_USERS_REQUESTED:

@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
+
+//Step 4: Apply Provider for application
+
+//wrap application with provider with store passed as a
+//prop in order for all components to have access to store
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
